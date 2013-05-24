@@ -30,7 +30,8 @@ module.exports = function(grunt) {
           'src/Renderer.js',
           'src/Support.js',
           'src/Util.js',
-          'src/renderers/Canvas.js'
+          'src/renderers/Canvas.js',
+          'src/Image.js'
         ],
         dest: 'build/<%= pkg.name %>.js'
       },
