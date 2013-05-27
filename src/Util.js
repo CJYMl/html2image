@@ -26,7 +26,8 @@ window.html2canvas = function(elements, opts) {
     width: null,
     height: null,
     taintTest: true, // do a taint test with all images before applying to canvas
-    renderer: "Canvas"
+    renderer: "Canvas",
+    imageType: 'png'
   };
 
   options = _html2canvas.Util.Extend(opts, options);
@@ -50,7 +51,25 @@ window.html2canvas = function(elements, opts) {
     canvas = _html2canvas.Renderer( queue, options );
 
     if (typeof options.onrendered === "function") {
-      options.onrendered( canvas );
+      
+      if (options.imageType) {
+        var _imageType = "image/";
+        switch(options.imageType) {
+          case "jpg":
+          case "jpeg":
+            _imageType += "jpeg";
+            break;
+          default:
+            _imageType += "png"; 
+            break;
+        }
+        
+        var image = canvas.toDataURL(_imageType);
+        options.onrendered( image );
+      } else {
+        options.onrendered( canvas );
+      }
+      
     }
 
 

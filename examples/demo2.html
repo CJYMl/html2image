@@ -1,68 +1,91 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="../tests/assets/jquery-1.6.2.js"></script>
-    <script type="text/javascript" src="../build/html2canvas.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        html2canvas( [ document.body ], {
-          onrendered: function(canvas) {
-            document.body.appendChild(canvas);
-          }
-        });
-      });
-    </script>
-    <style>
-      .feedback-overlay-black{
-        background-color:#000;
-        opacity:0.5;
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        margin:0;
-      }
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    </style>
+  <!-- Le styles -->
+  <style>
+  body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  }
+  </style>
+  <link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.1/simplex/bootstrap.min.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+</head>
 
-    <style>
-      div{
-        padding:20px;
-        margin:0 auto;
-        border:5px solid black;
-      }
+<body>
 
-      h1{
-        border-bottom:2px solid white;
-      }
-
-      h2{
-        background: #efefef;
-        padding:10px;
-      }
-
-
-    </style>
-  </head>
-  <body>
-    <div style="background:red;">
-      <div style="background:green;">
-        <div style="background:blue;border-color:white;">
-          <div style="background:yellow;"><div style="background:orange;"><h1>Heading</h1>
-              Text that isn't wrapped in anything.
-              <p>Followed by some text wrapped in a <b>&lt;p&gt; paragraph.</b> </p>
-              Maybe add a <a href="#">link</a> or a different style of <a href="#" style="background:white;" id="highlight">link with a highlight</a>.
-              <hr />
-              <h2>More content</h2>
-              <div style="width:10px;height:10px;border-width:10px;padding:0;">a</div>
-            </div></div>
-
-        </div>
-
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">html2image</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
-  </body>
+  </div>
+
+  <div class="container">
+    <h1>test content</h1>
+    <a class="btn btn-primary" id="startBtn">screenshot jpeg</a>
+    <h2>output image by jpeg </h2>
+    <div>
+      sample code
+      <pre>
+  $(function(){
+    $('#startBtn').on('click',function(event){
+      html2canvas(document.body, {
+        onrendered: function(image) {
+          $('#area').attr("src",image);
+        },
+        imageType:'jpeg'
+      });
+    });
+  });
+      </pre>
+    </div>
+    <div>
+      <span class="label">ここにキャプチャが表示される</span>
+    <img src="" id="area" />
+  </div>
+  </div> <!-- /container -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script src="../build/html2image.js"></script>
+  <script>
+    // $(function(){
+    //   $('#startBtn').on('click',function(event){
+    //    html2image(document.body,function(dataURI){
+    //     $('#area').attr('src',dataURI);
+    //    });
+    //  });
+    // });
+    $(function(){
+      $('#startBtn').on('click',function(event){
+        html2canvas(document.body, {
+          onrendered: function(image) {
+            $('#area').attr("src",image);
+          },
+          imageType:'jpeg'
+        });
+      });
+    });
+  </script>
+
+</body>
 </html>

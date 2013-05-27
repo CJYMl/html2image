@@ -5,6 +5,8 @@ module.exports = function(grunt) {
     banner: '/*\n  <%= pkg.title || pkg.name %> <%= pkg.version %>' +
       '<%= pkg.homepage ? " <" + pkg.homepage + ">" : "" %>' + '\n' +
       '  Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>' +
+      '\n\n  Fork by\n    html2canvas 0.4.0 <http://html2canvas.hertzen.com>' +
+      '\n    Copyright (c) 2013 Niklas von Hertzen (@niklasvh)' +
       '\n\n  Released under <%= _.pluck(pkg.licenses, "type").join(", ") %> License\n*/',
     pre: '\n(function(window, document, undefined){\n\n',
     post: '\n})(window,document);'
@@ -30,8 +32,7 @@ module.exports = function(grunt) {
           'src/Renderer.js',
           'src/Support.js',
           'src/Util.js',
-          'src/renderers/Canvas.js',
-          'src/Image.js'
+          'src/renderers/Canvas.js'
         ],
         dest: 'build/<%= pkg.name %>.js'
       },
