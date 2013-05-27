@@ -48,7 +48,7 @@
       <pre>
   $(function(){
     $('#startBtn').on('click',function(event){
-      html2canvas(document.body, {
+      html2image(document.body, {
         onrendered: function(image) {
           $('#area').attr("src",image);
         }
@@ -67,16 +67,9 @@
   <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <script src="../build/html2image.js"></script>
   <script>
-    // $(function(){
-    //   $('#startBtn').on('click',function(event){
-    //    html2image(document.body,function(dataURI){
-    //     $('#area').attr('src',dataURI);
-    //    });
-    //  });
-    // });
     $(function(){
       $('#startBtn').on('click',function(event){
-        html2canvas(document.body, {
+        html2image(document.body, {
           onrendered: function(image) {
             $('#area').attr("src",image);
           }
