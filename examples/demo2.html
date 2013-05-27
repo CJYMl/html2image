@@ -48,7 +48,7 @@
       <pre>
   $(function(){
     $('#startBtn').on('click',function(event){
-      html2canvas(document.body, {
+      html2image(document.body, {
         onrendered: function(image) {
           $('#area').attr("src",image);
         },
@@ -77,7 +77,7 @@
     // });
     $(function(){
       $('#startBtn').on('click',function(event){
-        html2canvas(document.body, {
+        html2image(document.body, {
           onrendered: function(image) {
             $('#area').attr("src",image);
           },
